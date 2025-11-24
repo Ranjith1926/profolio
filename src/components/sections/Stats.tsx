@@ -1,6 +1,6 @@
 'use client';
 
-import React, { useEffect, useState } from 'react';
+import React, { useEffect, useState, useRef } from 'react';
 import { Card } from '@/components/ui';
 import { STATS } from '@/constants/data';
 import { useScrollAnimation } from '@/hooks';
@@ -8,36 +8,38 @@ import { useScrollAnimation } from '@/hooks';
 interface AnimatedNumberProps {
   value: number;
   suffix?: string;
+  isVisible: boolean;
 }
 
-const AnimatedNumber: React.FC<AnimatedNumberProps> = ({ value, suffix = '' }) => {
+const AnimatedNumber: React.FC<AnimatedNumberProps> = ({ value, suffix = '', isVisible }) => {
   const [count, setCount] = useState(0);
-  const [hasAnimated, setHasAnimated] = useState(false);
-  const { isVisible, ref } = useScrollAnimation();
+  const hasAnimatedRef = useRef(false);
 
   useEffect(() => {
-    if (isVisible && !hasAnimated) {
-      setHasAnimated(true);
-      const duration = 2000;
-      const step = value / (duration / 16);
-      let current = 0;
+    if (!isVisible || hasAnimatedRef.current) return;
 
-      const timer = setInterval(() => {
-        current += step;
-        if (current >= value) {
-          setCount(value);
-          clearInterval(timer);
-        } else {
-          setCount(Math.floor(current));
-        }
-      }, 16);
+    hasAnimatedRef.current = true;
+    const duration = 2000;
+    const startTime = performance.now();
 
-      return () => clearInterval(timer);
-    }
-  }, [isVisible, value, hasAnimated]);
+    const animate = (currentTime: number) => {
+      const elapsed = currentTime - startTime;
+      const progress = Math.min(elapsed / duration, 1);
+
+      setCount(Math.floor(progress * value));
+
+      if (progress < 1) {
+        requestAnimationFrame(animate);
+      } else {
+        setCount(value);
+      }
+    };
+
+    requestAnimationFrame(animate);
+  }, [isVisible, value]);
 
   return (
-    <div ref={ref} className="text-5xl font-black font-display bg-gradient-primary bg-clip-text text-transparent">
+    <div className="text-5xl font-black font-display bg-gradient-primary bg-clip-text text-transparent">
       {count}{suffix}
     </div>
   );
@@ -60,7 +62,7 @@ const StatItem: React.FC<StatItemProps> = ({ stat, index }) => {
         }`}
         style={{ transitionDelay: `${index * 100}ms` }}
       >
-        <AnimatedNumber value={stat.value} suffix={stat.suffix} />
+        <AnimatedNumber value={stat.value} suffix={stat.suffix} isVisible={isVisible} />
         <p className="text-text-secondary font-semibold mt-2">{stat.label}</p>
       </Card>
     </div>
