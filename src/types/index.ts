@@ -36,6 +36,7 @@ export interface Project {
   technologies: string[];
   featured?: boolean;
   imageText: string;
+  liveUrl?: string;
 }
 
 export interface Education {

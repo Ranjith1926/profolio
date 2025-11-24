@@ -107,6 +107,7 @@ export const PROJECTS: Project[] = [
     ],
     featured: true,
     imageText: 'PB',
+    liveUrl: 'https://beta.planningbeats.com',
   },
   {
     id: 'helpdesk',
@@ -115,6 +116,7 @@ export const PROJECTS: Project[] = [
       'Comprehensive employee management system featuring payroll processing, attendance tracking, and ticketing system for internal support.',
     technologies: ['React.js', 'Redux'],
     imageText: 'HD',
+    liveUrl: 'http://helpdesk.spk-hasten.com',
   },
   {
     id: 'stationery-mart',
@@ -123,6 +125,7 @@ export const PROJECTS: Project[] = [
       'Full-featured e-commerce platform with both web and mobile applications for online stationery shopping.',
     technologies: ['React.js', 'React Native'],
     imageText: 'SM',
+    liveUrl: 'https://ncd-uat.adapptlabs.com',
   },
   {
     id: 'location-tracker',
@@ -130,6 +133,7 @@ export const PROJECTS: Project[] = [
     description: 'Real-time GPS tracking mobile application for location monitoring and route tracking.',
     technologies: ['React Native', 'Google Maps API'],
     imageText: 'LT',
+    liveUrl: 'https://ncd-uat.adapptlabs.com',
   },
   {
     id: 'tb-surveillance',
@@ -138,6 +142,7 @@ export const PROJECTS: Project[] = [
       'National health reporting application for tuberculosis surveillance developed for the World Health Organization.',
     technologies: ['React Native'],
     imageText: 'TB',
+    liveUrl: 'https://ncd-uat.adapptlabs.com',
   },
 ];
 
@@ -156,13 +161,13 @@ export const SOCIAL_LINKS = [
   },
   {
     name: 'GitHub',
-    href: 'https://github.com',
+    href: 'https://github.com/Ranjith1926',
     ariaLabel: 'GitHub',
     icon: Github,
   },
   {
     name: 'LinkedIn',
-    href: 'https://linkedin.com',
+    href: 'https://www.linkedin.com/in/ranjith-kumar-718091326',
     ariaLabel: 'LinkedIn',
     icon: Linkedin,
   },

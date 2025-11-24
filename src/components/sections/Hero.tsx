@@ -3,8 +3,9 @@
 import React from 'react';
 import Link from 'next/link';
 import { Button } from '@/components/ui';
-import { CONTACT_INFO, TYPING_TEXT } from '@/constants/data';
+import { CONTACT_INFO, SOCIAL_LINKS, TYPING_TEXT } from '@/constants/data';
 import { useTypingEffect } from '@/hooks';
+import { Download } from 'lucide-react';
 
 export const Hero: React.FC = () => {
   const typedText = useTypingEffect(TYPING_TEXT, 50, 1000);
@@ -45,7 +46,7 @@ export const Hero: React.FC = () => {
         </p>
 
         {/* Contact Info */}
-        <div className="flex flex-wrap gap-4 justify-center mb-8 opacity-0 animate-fade-in-up [animation-delay:800ms] [animation-fill-mode:forwards]">
+        <div className="flex flex-wrap gap-4 justify-center mb-6 opacity-0 animate-fade-in-up [animation-delay:800ms] [animation-fill-mode:forwards]">
           {CONTACT_INFO.map((contact) => (
             <a
               key={contact.type}
@@ -56,6 +57,31 @@ export const Hero: React.FC = () => {
               <span className="text-sm sm:text-base">{contact.value}</span>
             </a>
           ))}
+        </div>
+
+        {/* Social Links & Resume */}
+        <div className="flex flex-wrap gap-3 justify-center mb-8 opacity-0 animate-fade-in-up [animation-delay:900ms] [animation-fill-mode:forwards]">
+          {SOCIAL_LINKS.filter((link) => link.name !== 'Email').map((link) => (
+            <a
+              key={link.name}
+              href={link.href}
+              target="_blank"
+              rel="noopener noreferrer"
+              aria-label={link.ariaLabel}
+              className="flex items-center gap-2 px-5 py-2.5 bg-slate-900 text-white rounded-full hover:bg-primary hover:-translate-y-1 hover:shadow-lg hover:shadow-primary/20 transition-all duration-300 font-medium text-sm"
+            >
+              <link.icon className="w-4 h-4" />
+              <span>{link.name}</span>
+            </a>
+          ))}
+          <a
+            href="/resume.pdf"
+            download
+            className="flex items-center gap-2 px-5 py-2.5 rounded-full border-2 border-slate-300 text-slate-700 hover:border-primary hover:text-primary hover:-translate-y-1 hover:shadow-lg hover:shadow-primary/10 transition-all duration-300 font-medium text-sm"
+          >
+            <Download className="w-4 h-4" />
+            <span>Download Resume</span>
+          </a>
         </div>
 
         {/* CTA Buttons */}

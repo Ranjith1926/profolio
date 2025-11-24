@@ -16,9 +16,9 @@ const poppins = Poppins({
 });
 
 export const metadata: Metadata = {
-  title: 'S Ranjith Kumar - Software Engineer',
+  title: 'S Ranjith Kumar | Software Engineer',
   description:
-    'Portfolio of S Ranjith Kumar - Software Engineer specializing in React.js, Next.js, and React Native. Building scalable web & mobile applications with 4+ years of experience.',
+    'Software Engineer specializing in React, Next.js, and React Native. Built multi-tenant SaaS platforms, mobile apps, and enterprise web applications.',
   keywords: [
     'Software Engineer',
     'React.js',
@@ -31,12 +31,16 @@ export const metadata: Metadata = {
   ],
   authors: [{ name: 'S Ranjith Kumar' }],
   creator: 'S Ranjith Kumar',
+  icons: {
+    icon: '/icon.svg',
+    apple: '/apple-icon.svg',
+  },
   openGraph: {
     type: 'website',
     locale: 'en_US',
-    title: 'S Ranjith Kumar - Software Engineer',
+    title: 'S Ranjith Kumar | Software Engineer',
     description:
-      'Portfolio of S Ranjith Kumar - Software Engineer specializing in React.js, Next.js, and React Native.',
+      'Software Engineer specializing in React, Next.js, and React Native. Built multi-tenant SaaS platforms, mobile apps, and enterprise web applications.',
     siteName: 'S Ranjith Kumar Portfolio',
   },
 };
