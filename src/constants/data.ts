@@ -28,7 +28,7 @@ export const CONTACT_INFO: ContactInfo[] = [
 
 export const STATS: Stat[] = [
   { value: 4, label: 'Years Experience', suffix: '+' },
-  { value: 5, label: 'Major Projects', suffix: '+' },
+  { value: 10, label: 'Major Projects', suffix: '+' },
   { value: 15, label: 'Technologies', suffix: '+' },
   { value: 100, label: 'Success Rate', suffix: '%' },
 ];
